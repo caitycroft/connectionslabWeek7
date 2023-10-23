@@ -1,0 +1,14 @@
+{
+  "name": "cc-week7",
+  "version": "1.0.0",
+  "description": "connectionsLabWeek7Homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Caity Croft",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
