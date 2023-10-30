@@ -1,5 +1,5 @@
 {
-  "name": "cc-week7",
+  "name": "cc7",
   "version": "1.0.0",
   "description": "connectionsLabWeek7Homework",
   "main": "index.js",
@@ -9,6 +9,7 @@
   "author": "Caity Croft",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "express": "^4.18.2"
   }
 }
