@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-    document.getElementByIDI('button_dance').addEventListener('click', () => {
+    document.getElementByID('button_dance').addEventListener('click', () => {
         let noDance = document.getElementById('number_danceParties').value;
         console.log(noDance);
 
@@ -29,21 +29,22 @@ window.addEventListener('load', () => {
 
 
     });
+});
 
-    document.getElementById('et-dance-tracker').addEventListener('click', () => {
-        //get info on ALL the dance parties we've had so far
-        fetch('/getDancing')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('dance-info').innerHTML = '';
-                for (let i = 0; <data.data.length; i++) {
-                    let string = data.data[i].date + " : " + data.data[i].dances;
-                    let elt = document.createElement('p');
-                    elt.innerHTML = string;
-                    document.getElementById('dance-info').appendChild(elt);
-                }
-            })
-    });
+document.getElementById('et-dance-tracker').addEventListener('click', () => {
+    //get info on ALL the dance parties we've had so far
+    fetch('/getDancing')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('dance-info').innerHTML = '';
+            for (let i = 0; data.data.length; i++) {
+                let string = data.data[i].date + " : " + data.data[i].dances;
+                let elt = document.createElement('p');
+                elt.innerHTML = string;
+                document.getElementById('dance-info').appendChild(elt);
+            }
+        })
+});
 
 
 //The use of fetch() on the client to make a POST request to your server

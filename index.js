@@ -3,6 +3,23 @@ let app = express();
 app.use(express.static('public'));
 app.use(express.json());
 
+//DB - 1 - Connect to the Mongo DB app
+const { Database } = require("quickmongo");
+const db = new Database("mongodb+srv://caitycroft:fpkccqcft6yhnMDB@cluster0.iltflrd.mongodb.net/?retryWrites=true&w=majority");
+db.on("ready", () => {
+    console.log("Database connected!");
+});
+db.connect();
+
+//DB - 2 - add values to the DB
+
+//Change these two lines below to a key:value pair -- consult quickmongo documentation
+// danceTracker.push(obj);
+// console.log(danceTracker);
+db.push("danceTrackerData", obj);
+
+
+
 let danceTracker = [];
 
 app.get('/', (request, response) => {
@@ -22,15 +39,21 @@ app.post('/noDanceParties', (request, response) => {
         date: CurrentDate,
         dance: request.body.number,
     }
-    danceTracker.push(obj);
-    console.log(danceTracker);
+    // danceTracker.push(obj);
+    // console.log(danceTracker);
     response.json({ task: "success" });
 });
 
 //add route to get all dance party tracking information
 app.get('/getDancing', (request, response) => {
-    let obj = { data: dancePartyTracker };
-    response.json(obj);
+    //DB - 3 - fetch from the DB
+    db.get("danceTrackerData").then(danceData => {
+        let obj = { data: dancePartyTracker };
+        response.json(obj);
+
+    }
+    )
+
 })
 
 
